@@ -212,7 +212,11 @@ img, svg { max-width: 100%; }
     flex-direction: column !important;
     padding: 28px 20px !important;
     gap: 28px !important;
-    align-items: flex-start !important;
+    align-items: stretch !important;
+  }
+  /* Centrer le téléphone démo */
+  .products-row > div[style*="flex:0 0 auto"] {
+    align-self: center !important;
   }
   .coming-soon-grid {
     grid-template-columns: 1fr !important;
@@ -238,12 +242,16 @@ img, svg { max-width: 100%; }
     padding: 4px 4px 14px !important;
   }
   .steps-grid::-webkit-scrollbar { display: none !important; }
-  .steps-grid > div:not([style*="flex-shrink:0"]) {
-    flex: 0 0 82vw !important;
+  /* Cacher les flèches (2e et 4e enfants) */
+  .steps-grid > div:nth-child(2),
+  .steps-grid > div:nth-child(4) { display: none !important; }
+  /* Les 3 étapes occupent chacune 100% du carousel */
+  .steps-grid > div:nth-child(1),
+  .steps-grid > div:nth-child(3),
+  .steps-grid > div:nth-child(5) {
+    flex: 0 0 100% !important;
     scroll-snap-align: start !important;
   }
-  /* Cacher les flèches entre les étapes */
-  .steps-grid > div[style*="flex-shrink:0"] { display: none !important; }
 
   /* === TÉMOIGNAGES — carousel horizontal === */
   #temoignages div[style*="display:grid"] {
