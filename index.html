@@ -122,6 +122,135 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
 .no-clip{overflow:visible!important}
 </style>
 
+
+<style>
+/* ── RESPONSIVE MOBILE ── */
+* { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+img, svg { max-width: 100%; }
+
+@media (max-width: 768px) {
+
+  /* === NAV === */
+  .nav-inner { padding: 0 20px !important; height: 60px !important; }
+  .nav-links { display: none !important; }
+  .nav-ctas a:first-child { display: none !important; } /* hide Connexion */
+  .nav-ctas { gap: 8px !important; }
+  .nav-ctas a { padding: 10px 16px !important; font-size: 13px !important; }
+
+  /* === CONTAINERS === */
+  .container { padding: 0 20px !important; }
+
+  /* === SECTIONS vertical padding === */
+  section[id] { padding: 56px 0 !important; }
+  #hero { padding: 0 !important; }
+
+  /* === HERO === */
+  .hero-cols {
+    flex-direction: column !important;
+    padding: 40px 20px 48px !important;
+    gap: 36px !important;
+    align-items: center !important;
+  }
+  .hero-text {
+    flex: 1 1 auto !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+  .hero-text h1 { font-size: 28px !important; }
+  .hero-text p { margin: 0 auto !important; }
+  .hero-ctas { justify-content: center !important; flex-wrap: wrap !important; }
+  /* Phone mockup */
+  .hero-cols > div:not(.hero-text) {
+    max-width: 260px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* === PRODUCTS === */
+  .products-row {
+    flex-direction: column !important;
+    padding: 28px 20px !important;
+    gap: 28px !important;
+    align-items: flex-start !important;
+  }
+  .coming-soon-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* === SOLUTIONS === */
+  .solutions-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* === HOW IT WORKS === */
+  .steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  /* Hide arrows between steps */
+  .steps-grid > div[style*="flex-shrink:0"] { display: none !important; }
+
+  /* === TÉMOIGNAGES === */
+  #temoignages .container > div:last-child {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  #temoignages div[style*="display:grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* === TARIFS / PRICING === */
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* === CTA SECTION === */
+  #contact { padding: 64px 0 !important; }
+  #contact .container { text-align: center !important; }
+  #contact h2 { font-size: 24px !important; }
+  .cta-buttons {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .cta-buttons a { text-align: center !important; padding: 15px 24px !important; }
+
+  /* === FOOTER === */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+  footer .container > div:last-child {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+
+  /* === FAQ / ACCORDION === */
+  #faq h2 { font-size: 24px !important; }
+
+  /* === GLOBAL FONT SIZES === */
+  h2[style*="font-size:30px"] { font-size: 24px !important; }
+  h3[style*="font-size:20px"] { font-size: 17px !important; }
+}
+
+@media (max-width: 480px) {
+  /* Single column footer on very small screens */
+  .footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+  /* Hero even smaller */
+  .hero-text h1 { font-size: 24px !important; }
+  .hero-cols > div:not(.hero-text) { max-width: 200px !important; }
+
+  /* Products row phone mockup */
+  .products-row img, .products-row > div:last-child { max-width: 200px !important; }
+}
+</style>
 </head>
 <body>
 <!-- ── NAV ── -->
@@ -133,13 +262,13 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
       </div>
       <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#1F2937;letter-spacing:-.01em">Eidma</span>
     </div>
-    <div style="display:flex;align-items:center;gap:36px">
+    <div class="nav-links" style="display:flex;align-items:center;gap:36px">
       <a href="#produits" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">Produits</a>
       <a href="#solutions" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">Solutions</a>
       <a href="#tarifs" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">Tarifs</a>
       <a href="https://wa.me/15145522214" target="_blank" rel="noopener" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">Contact</a>
     </div>
-    <div style="display:flex;align-items:center;gap:16px">
+    <div class="nav-ctas" style="display:flex;align-items:center;gap:16px">
       <a href="https://margopro.eidma.co" target="_blank" rel="noopener" style="text-decoration:none;color:#1F2937;font-size:14px;font-weight:500">Connexion</a>
       <a href="https://margopro.eidma.co" target="_blank" rel="noopener" style="text-decoration:none;background:#C2501A;color:white;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;box-shadow:0 2px 10px rgba(194,80,26,.25)">Commencer</a>
     </div>
@@ -147,12 +276,12 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
 </nav>
 
 <!-- ── HERO ── -->
-<section style="background:#FAFAF8;position:relative;overflow:hidden;padding:0">
+<section id="hero" style="background:#FAFAF8;position:relative;overflow:hidden;padding:0">
   <div style="position:absolute;right:-120px;top:-80px;width:520px;height:520px;background:radial-gradient(circle,rgba(194,80,26,.1) 0%,transparent 68%);border-radius:50%;pointer-events:none"></div>
   <div style="position:absolute;left:-60px;bottom:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(212,175,55,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none"></div>
-  <div style="max-width:1200px;margin:0 auto;padding:64px 64px 80px;display:flex;align-items:flex-start;gap:48px">
+  <div class="hero-cols" style="max-width:1200px;margin:0 auto;padding:64px 64px 80px;display:flex;align-items:flex-start;gap:48px">
     <!-- Texte -->
-    <div style="flex:0 0 510px;display:flex;flex-direction:column;gap:24px;padding-top:12px">
+    <div class="hero-text" style="flex:0 0 510px;display:flex;flex-direction:column;gap:24px;padding-top:12px">
       <div style="display:inline-flex;align-items:center;gap:8px;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;width:fit-content">
         <div style="width:7px;height:7px;border-radius:50%;background:#C2501A;box-shadow:0 0 0 3px rgba(194,80,26,.2)"></div>
         <span style="font-size:13px;color:#C2501A;font-weight:500">Nouveau · MargoPro est disponible</span>
@@ -163,7 +292,7 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
         en toute simplicité.
       </h1>
       <p style="font-size:15px;line-height:1.72;color:#6B7280;max-width:440px;text-wrap:pretty">MargoPro aide les entrepreneurs à suivre leur activité en temps réel, à éviter les erreurs de stock et à prendre de meilleures décisions, le tout depuis une seule application.</p>
-      <div style="display:flex;align-items:center;gap:16px">
+      <div class="nav-ctas" style="display:flex;align-items:center;gap:16px">
         <a href="https://margopro.eidma.co" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:#C2501A;color:white;padding:13px 26px;border-radius:10px;font-size:15px;font-weight:600;box-shadow:0 6px 22px rgba(194,80,26,.32)">Découvrir MargoPro <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
         <a href="#" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;color:#1F2937;font-size:14px;font-weight:500">
           <div style="width:36px;height:36px;border-radius:50%;background:#1F2937;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="12" height="13" viewBox="0 0 12 13" fill="none"><path d="M2 1.5l9 5-9 5V1.5z" fill="white"></path></svg></div>
@@ -224,14 +353,14 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
 
 <!-- ── PRODUITS ── -->
 <section id="produits" style="background:white;padding:96px 0">
-  <div style="max-width:1200px;margin:0 auto;padding:0 64px">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
     <div style="text-align:center;margin-bottom:64px">
       <div style="display:inline-flex;align-items:center;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Nos produits</span></div>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em;line-height:1.3;margin-bottom:14px">Des outils conçus pour faciliter votre quotidien</h2>
       <p style="font-size:16px;color:#6B7280;max-width:480px;margin:0 auto;line-height:1.65">Eidma développe des applications simples pour le quotidien — commerce, organisation, famille. MargoPro est notre premier produit, dédié aux commerçants africains.</p>
     </div>
     <!-- MargoPro card principale -->
-    <div style="background:#FAFAF8;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:52px;display:flex;gap:56px;align-items:center;margin-bottom:20px">
+    <div class="products-row" style="background:#FAFAF8;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:52px;display:flex;gap:56px;align-items:center;margin-bottom:20px">
       <div style="flex:1">
         <div style="display:inline-flex;align-items:center;gap:7px;background:white;border:1px solid rgba(194,80,26,.25);border-radius:100px;padding:6px 14px;margin-bottom:22px"><div style="width:7px;height:7px;border-radius:50%;background:#C2501A"></div><span style="font-size:12px;color:#C2501A;font-weight:600;letter-spacing:.02em">PHARE · Application mobile</span></div>
         <h3 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:800;color:#1F2937;letter-spacing:-.02em;line-height:1.3;margin-bottom:12px">MargoPro</h3>
@@ -272,7 +401,7 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
       </div>
     </div>
     <!-- 2 autres -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div class="coming-soon-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
       <div style="background:#FAFAF8;border:1px solid rgba(0,0,0,.07);border-radius:16px;padding:32px;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:#F3F4F6;border-radius:100px;padding:4px 10px"><span style="font-size:11px;color:#9CA3AF;font-weight:600">Bientôt</span></div>
         <div style="width:42px;height:42px;background:linear-gradient(135deg,#D4AF37,#E7C86E);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h10M3 15h7" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg></div>
@@ -291,13 +420,13 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
 
 <!-- ── SOLUTIONS ── -->
 <section id="solutions" style="background:#F5F4F2;padding:96px 0">
-  <div style="max-width:1200px;margin:0 auto;padding:0 64px">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
     <div style="text-align:center;margin-bottom:60px">
       <div style="display:inline-flex;align-items:center;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Pourquoi MargoPro</span></div>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em;line-height:1.3;margin-bottom:14px">Tout ce qu'il faut pour gérer votre activité</h2>
       <p style="font-size:16px;color:#6B7280;max-width:460px;margin:0 auto;line-height:1.65">MargoPro centralise toutes les informations essentielles pour que vous puissiez vous concentrer sur votre commerce.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+    <div class="solutions-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
       <div style="background:white;border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,.05)">
         <div style="width:46px;height:46px;background:#FEF0E8;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M2 2v18h18" stroke="#C2501A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6 15l4-5 3 3 5-7" stroke="#C2501A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
         <h4 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#1F2937;margin-bottom:9px">Suivi en temps réel</h4>
@@ -324,12 +453,12 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
 
 <!-- ── COMMENT ÇA FONCTIONNE ── -->
 <section id="faq" style="background:white;padding:96px 0">
-  <div style="max-width:1200px;margin:0 auto;padding:0 64px">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
     <div style="text-align:center;margin-bottom:60px">
       <div style="display:inline-flex;align-items:center;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Comment ça fonctionne</span></div>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em">Démarrez en 3 étapes</h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:20px;align-items:start">
+    <div class="steps-grid" style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:20px;align-items:start">
       <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px">
         <div style="width:52px;height:52px;border-radius:50%;background:#C2501A;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(194,80,26,.35)"><span style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:white">1</span></div>
         <div><h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#1F2937;margin-bottom:9px">Créez votre compte</h4><p style="font-size:14px;color:#6B7280;line-height:1.65">Inscrivez-vous gratuitement en moins de 2 minutes. Aucune information bancaire requise.</p></div>
@@ -349,8 +478,8 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
 </section>
 
 <!-- ── TÉMOIGNAGES ── -->
-<section style="background:#1F2937;padding:96px 0">
-  <div style="max-width:1200px;margin:0 auto;padding:0 64px">
+<section id="temoignages" style="background:#1F2937;padding:96px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
     <div style="text-align:center;margin-bottom:60px">
       <div style="display:inline-flex;background:rgba(194,80,26,.2);border:1px solid rgba(194,80,26,.4);border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#F4B896;font-weight:600">Témoignages</span></div>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:white;letter-spacing:-.02em;margin-bottom:14px">Ce que disent nos commerçants</h2>
@@ -378,13 +507,13 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
 
 <!-- ── TARIFS ── -->
 <section id="tarifs" style="background:#FAFAF8;padding:96px 0">
-  <div style="max-width:1200px;margin:0 auto;padding:0 64px">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
     <div style="text-align:center;margin-bottom:60px">
       <div style="display:inline-flex;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Tarifs</span></div>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em;margin-bottom:14px">Un prix juste pour chaque commerce</h2>
       <p style="font-size:16px;color:#6B7280;max-width:400px;margin:0 auto;line-height:1.65">Commencez gratuitement. Évoluez selon votre activité.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;max-width:760px;margin:0 auto">
+    <div class="pricing-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;max-width:760px;margin:0 auto">
       <!-- Gratuit -->
       <div style="background:white;border:1px solid rgba(0,0,0,.1);border-radius:18px;padding:32px">
         <div style="margin-bottom:24px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#1F2937;margin-bottom:7px">Gratuit</div><div style="display:flex;align-items:baseline;gap:5px;margin-bottom:7px;white-space:nowrap"><span style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;color:#1F2937">0</span><span style="font-size:13px;color:#6B7280">FCFA / mois</span></div><p style="font-size:12px;color:#9CA3AF">Pour commencer et découvrir</p></div>
@@ -454,7 +583,7 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
   <div style="max-width:700px;margin:0 auto;padding:0 64px;text-align:center;position:relative;z-index:2">
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:800;color:white;letter-spacing:-.025em;line-height:1.3;margin-bottom:18px">Prêt à gérer votre commerce intelligemment ?</h2>
     <p style="font-size:17px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto">Rejoignez 2 500+ commerçants qui utilisent déjà MargoPro pour booster leurs bénéfices.</p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:22px">
+    <div class="cta-buttons" style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:22px">
       <a href="https://margopro.eidma.co" target="_blank" rel="noopener" style="text-decoration:none;background:white;color:#C2501A;padding:15px 32px;border-radius:12px;font-size:16px;font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,.2)">Commencer gratuitement</a>
       <a href="#produits" style="text-decoration:none;border:2px solid rgba(255,255,255,.4);color:white;padding:15px 28px;border-radius:12px;font-size:16px;font-weight:500">Voir la démo</a>
     </div>
@@ -464,8 +593,8 @@ h1,h2,h3,h4,h5,h6{overflow:visible;line-height:1.4;padding-bottom:0.15em;font-fa
 
 <!-- ── FOOTER ── -->
 <footer style="background:#1A1208;padding:64px 0 32px">
-  <div style="max-width:1200px;margin:0 auto;padding:0 64px">
-    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px">
       <div>
         <div style="display:flex;align-items:center;gap:9px;margin-bottom:18px">
           <div style="width:32px;height:32px;background:linear-gradient(135deg,#C2501A,#9A3E14);border-radius:8px;display:flex;align-items:center;justify-content:center"><span style="color:white;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14px">E</span></div>
