@@ -225,22 +225,41 @@ img, svg { max-width: 100%; }
     gap: 12px !important;
   }
 
-  /* === HOW IT WORKS === */
+  /* === HOW IT WORKS — carousel horizontal === */
   .steps-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: scroll !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    padding: 4px 4px 14px !important;
   }
-  /* Hide arrows between steps */
+  .steps-grid::-webkit-scrollbar { display: none !important; }
+  .steps-grid > div:not([style*="flex-shrink:0"]) {
+    flex: 0 0 82vw !important;
+    scroll-snap-align: start !important;
+  }
+  /* Cacher les flèches entre les étapes */
   .steps-grid > div[style*="flex-shrink:0"] { display: none !important; }
 
-  /* === TÉMOIGNAGES === */
-  #temoignages .container > div:last-child {
-    flex-direction: column !important;
-    gap: 16px !important;
-  }
+  /* === TÉMOIGNAGES — carousel horizontal === */
   #temoignages div[style*="display:grid"] {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: scroll !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 12px !important;
+    padding: 4px 4px 14px !important;
+  }
+  #temoignages div[style*="display:grid"]::-webkit-scrollbar { display: none !important; }
+  #temoignages div[style*="display:grid"] > div {
+    flex: 0 0 82vw !important;
+    scroll-snap-align: start !important;
   }
 
   /* === TARIFS / PRICING === */
@@ -285,19 +304,25 @@ img, svg { max-width: 100%; }
   section div[style*="margin-bottom:60px"] { margin-bottom: 20px !important; }
   section div[style*="margin-bottom:64px"] { margin-bottom: 20px !important; }
 
-  /* Solutions : garder 2 cartes sur 4 */
-  .solutions-grid > div:nth-child(3),
-  .solutions-grid > div:nth-child(4) { display: none !important; }
-
-  /* Témoignages : afficher 1 seul */
-  #temoignages div[style*="display:grid"] > div:nth-child(2),
-  #temoignages div[style*="display:grid"] > div:nth-child(3) { display: none !important; }
+  /* Solutions — carousel horizontal */
+  .solutions-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: scroll !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 12px !important;
+    padding: 4px 4px 14px !important;
+  }
+  .solutions-grid::-webkit-scrollbar { display: none !important; }
+  .solutions-grid > div {
+    flex: 0 0 82vw !important;
+    scroll-snap-align: start !important;
+  }
 
   /* Produits : cacher les cartes « Bientôt » */
   .coming-soon-grid { display: none !important; }
-
-  /* Témoignages : réduire l'intro */
-  #temoignages div[style*="margin-bottom:60px"] { margin-bottom: 16px !important; }
 }
 
 @media (max-width: 480px) {
