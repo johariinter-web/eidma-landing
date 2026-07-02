@@ -413,24 +413,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
 </section>
 
 
-<!-- ── DÉMO ── -->
-<section id="demo" style="background:#1A1208;padding:80px 0">
-  <div class="container" style="max-width:900px;margin:0 auto;padding:0 64px">
-    <div style="text-align:center;margin-bottom:36px">
-      <div style="display:inline-flex;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:7px 16px;margin-bottom:16px"><span style="font-size:13px;color:rgba(255,255,255,.8);font-weight:600">Démonstration</span></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:white;letter-spacing:-.02em;margin-bottom:12px">Voyez MargoPro en action</h2>
-      <p style="font-size:15px;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto;line-height:1.6">Découvrez comment gérer votre stock, enregistrer vos ventes et suivre vos bénéfices en quelques secondes.</p>
-    </div>
-    <div style="border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);background:#000">
-      <video controls playsinline preload="metadata" style="width:100%;display:block;max-height:600px;object-fit:contain;background:#000">
-        <source src="/MP4.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div style="text-align:center;margin-top:28px">
-      <a href="https://margopro.eidma.co" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block;background:#C2501A;color:white;padding:14px 32px;border-radius:12px;font-size:15px;font-weight:700;box-shadow:0 6px 22px rgba(194,80,26,.4)">Essayer gratuitement</a>
-    </div>
-  </div>
-</section>
+<div id="demo"></div>
 <!-- ── PRODUITS ── -->
 <section id="produits" style="background:white;padding:96px 0">
   <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
@@ -454,28 +437,14 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
         </div>
         <a href="#" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:#C2501A;color:white;padding:13px 26px;border-radius:10px;font-size:14px;font-weight:600;box-shadow:0 4px 16px rgba(194,80,26,.28)">Découvrir MargoPro <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
       </div>
-      <!-- Mini phone -->
+      <!-- Mini phone — démo vidéo -->
       <div style="flex:0 0 auto">
         <div style="width:190px;height:390px;background:#111827;border-radius:34px;padding:6px;box-shadow:0 28px 56px rgba(0,0,0,.18),0 0 0 1px rgba(255,255,255,.08)">
-          <div style="width:100%;height:100%;background:#F5F0EB;border-radius:28px;overflow:hidden">
-            <div style="background:#F5F0EB;padding:9px 9px 6px;display:flex;align-items:center;justify-content:space-between">
-              <div style="font-size:12px;font-weight:800;color:#1A1208;line-height:1.4;padding-bottom:2px">MargoPro</div>
-              <div style="font-size:7px;color:#9CA3AF">jeudi 4 juin</div>
-            </div>
-            <div style="padding:0 8px;display:grid;grid-template-columns:1fr 1fr;gap:5px">
-              <div style="background:white;border-radius:10px;padding:8px"><div style="font-size:6px;color:#9CA3AF;margin-bottom:2px">CA DU JOUR</div><div style="font-size:13px;font-weight:800;color:#1A1208">11 500</div><div style="font-size:6px;color:#9CA3AF">FCFA</div></div>
-              <div style="background:#DCFCE7;border-radius:10px;padding:8px"><div style="font-size:6px;color:#9CA3AF;margin-bottom:2px">BÉNÉFICE</div><div style="font-size:13px;font-weight:800;color:#15803D">6 600</div><div style="font-size:6px;color:#15803D">Marge 57%</div></div>
-              <div style="background:#FEF0E8;border-radius:10px;padding:8px"><div style="font-size:6px;color:#9CA3AF;margin-bottom:2px">VENTES</div><div style="font-size:20px;font-weight:800;color:#C2501A">3</div></div>
-              <div style="background:white;border-radius:10px;padding:8px"><div style="font-size:6px;color:#9CA3AF;margin-bottom:2px">STOCK</div><div style="font-size:20px;font-weight:800;color:#1A1208">160</div></div>
-            </div>
-            <div style="background:white;border-radius:11px;margin:5px 8px;padding:9px">
-              <div style="font-size:9px;font-weight:700;color:#1A1208;margin-bottom:6px">Top produits</div>
-              <div style="display:flex;align-items:center;gap:7px">
-                <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="none" stroke="#E5E7EB" stroke-width="7"></circle><circle cx="20" cy="20" r="13" fill="none" stroke="#C2501A" stroke-width="7" stroke-dasharray="50 32" stroke-dashoffset="0" transform="rotate(-90 20 20)"></circle><circle cx="20" cy="20" r="13" fill="none" stroke="#22A854" stroke-width="7" stroke-dasharray="21 61" stroke-dashoffset="-50" transform="rotate(-90 20 20)"></circle><circle cx="20" cy="20" r="13" fill="none" stroke="#D4AF37" stroke-width="7" stroke-dasharray="11 71" stroke-dashoffset="-71" transform="rotate(-90 20 20)"></circle><circle cx="20" cy="20" r="8" fill="white"></circle></svg>
-                <div style="font-size:7px;color:#6B7280;line-height:1.8">Robes longue 61%<br>Robes courte 26%<br>Tapette 13%</div>
-              </div>
-            </div>
-            <div style="padding:0 8px 7px"><div style="background:#C2501A;border-radius:9px;padding:9px;text-align:center"><span style="font-size:10px;font-weight:700;color:white">+ Nouvelle vente</span></div></div>
+          <div style="width:100%;height:100%;background:#000;border-radius:28px;overflow:hidden;position:relative">
+            <video autoplay muted loop playsinline style="width:100%;height:100%;display:block;object-fit:cover">
+              <source src="/MP4.mp4" type="video/mp4">
+            </video>
+            <div style="position:absolute;top:0;left:0;right:0;height:14px;background:#111827;border-radius:28px 28px 0 0;pointer-events:none"></div>
           </div>
         </div>
       </div>
