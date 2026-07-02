@@ -182,7 +182,7 @@ img, svg { max-width: 100%; }
   .container { padding: 0 20px !important; }
 
   /* === SECTIONS vertical padding === */
-  section[id] { padding: 56px 0 !important; }
+  section[id] { padding: 36px 0 !important; }
   #hero { padding: 0 !important; }
 
   /* === HERO === */
@@ -250,7 +250,7 @@ img, svg { max-width: 100%; }
   }
 
   /* === CTA SECTION === */
-  #contact { padding: 64px 0 !important; }
+  #contact { padding: 48px 0 !important; }
   #contact .container { text-align: center !important; }
   #contact h2 { font-size: 24px !important; }
   #contact div[style*="max-width:700px"] { padding: 0 20px !important; }
@@ -274,10 +274,30 @@ img, svg { max-width: 100%; }
 
   /* === FAQ / ACCORDION === */
   #faq h2 { font-size: 24px !important; }
+  details { padding: 14px 0 !important; }
 
   /* === GLOBAL FONT SIZES === */
   h2[style*="font-size:30px"] { font-size: 24px !important; }
   h3[style*="font-size:20px"] { font-size: 17px !important; }
+
+  /* ─── RÉDUCTION LONGUEUR PAGE ─── */
+  /* Marges des en-têtes de sections */
+  section div[style*="margin-bottom:60px"] { margin-bottom: 20px !important; }
+  section div[style*="margin-bottom:64px"] { margin-bottom: 20px !important; }
+
+  /* Solutions : garder 2 cartes sur 4 */
+  .solutions-grid > div:nth-child(3),
+  .solutions-grid > div:nth-child(4) { display: none !important; }
+
+  /* Témoignages : afficher 1 seul */
+  #temoignages div[style*="display:grid"] > div:nth-child(2),
+  #temoignages div[style*="display:grid"] > div:nth-child(3) { display: none !important; }
+
+  /* Produits : cacher les cartes « Bientôt » */
+  .coming-soon-grid { display: none !important; }
+
+  /* Témoignages : réduire l'intro */
+  #temoignages div[style*="margin-bottom:60px"] { margin-bottom: 16px !important; }
 }
 
 @media (max-width: 480px) {
