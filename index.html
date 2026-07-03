@@ -723,5 +723,39 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
     </div>
   </div>
 </footer>
+
+<script>
+// Flèche de navigation sur le carousel "Comment ça fonctionne" (mobile uniquement)
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.innerWidth > 768) return;
+
+  var carousel = document.querySelector('.steps-grid');
+  if (!carousel) return;
+
+  // Wrapper pour le positionnement de la flèche
+  var wrap = document.createElement('div');
+  wrap.style.cssText = 'position:relative';
+  carousel.parentNode.insertBefore(wrap, carousel);
+  wrap.appendChild(carousel);
+
+  // Bouton flèche droite
+  var btn = document.createElement('button');
+  btn.setAttribute('aria-label', 'Étape suivante');
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.5 2.5l5 4.5-5 4.5" stroke="#C2501A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  btn.style.cssText = 'position:absolute;right:0;top:50%;transform:translateY(-60%);background:white;border:1px solid rgba(0,0,0,.08);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15);z-index:10;padding:0';
+
+  btn.addEventListener('click', function() {
+    carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
+  });
+
+  // Disparaît à la dernière étape
+  carousel.addEventListener('scroll', function() {
+    var atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
+    btn.style.display = atEnd ? 'none' : 'flex';
+  }, { passive: true });
+
+  wrap.appendChild(btn);
+});
+</script>
 </body>
 </html>
