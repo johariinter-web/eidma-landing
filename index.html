@@ -620,6 +620,63 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
   </div>
 </section>
 
+<!-- ── LAISSER UN AVIS ── -->
+<section id="avis" style="background:white;padding:96px 0">
+  <div style="max-width:560px;margin:0 auto;padding:0 64px">
+    <div style="text-align:center;margin-bottom:40px">
+      <div style="display:inline-flex;align-items:center;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Votre avis</span></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em;margin-bottom:12px">Partagez votre expérience</h2>
+      <p style="font-size:15px;color:#6B7280;line-height:1.65">Vous utilisez MargoPro ? Votre avis aide d'autres commerçants à se lancer.</p>
+    </div>
+
+    <div id="review-wrap">
+      <form id="review-form" action="https://formspree.io/f/VOTRE_ID" method="POST">
+        <input type="hidden" name="_subject" value="Nouvel avis MargoPro">
+
+        <!-- Note étoiles -->
+        <div style="margin-bottom:24px;text-align:center">
+          <p style="font-size:13px;font-weight:600;color:#374151;margin-bottom:12px">Votre note *</p>
+          <div style="display:flex;justify-content:center;gap:6px" id="star-group">
+            <button type="button" class="star-btn" data-val="1" aria-label="1 étoile" style="background:none;border:none;font-size:36px;color:#D1D5DB;cursor:pointer;padding:0;line-height:1;transition:color .15s">★</button>
+            <button type="button" class="star-btn" data-val="2" aria-label="2 étoiles" style="background:none;border:none;font-size:36px;color:#D1D5DB;cursor:pointer;padding:0;line-height:1;transition:color .15s">★</button>
+            <button type="button" class="star-btn" data-val="3" aria-label="3 étoiles" style="background:none;border:none;font-size:36px;color:#D1D5DB;cursor:pointer;padding:0;line-height:1;transition:color .15s">★</button>
+            <button type="button" class="star-btn" data-val="4" aria-label="4 étoiles" style="background:none;border:none;font-size:36px;color:#D1D5DB;cursor:pointer;padding:0;line-height:1;transition:color .15s">★</button>
+            <button type="button" class="star-btn" data-val="5" aria-label="5 étoiles" style="background:none;border:none;font-size:36px;color:#D1D5DB;cursor:pointer;padding:0;line-height:1;transition:color .15s">★</button>
+          </div>
+          <input type="hidden" name="note" id="note-input">
+        </div>
+
+        <!-- Prénom + Ville -->
+        <div class="review-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Prénom *</label>
+            <input type="text" name="prenom" required placeholder="Aminata" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Ville</label>
+            <input type="text" name="ville" placeholder="Dakar" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none">
+          </div>
+        </div>
+
+        <!-- Avis -->
+        <div style="margin-bottom:20px">
+          <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Votre avis *</label>
+          <textarea name="avis" required rows="4" placeholder="Comment MargoPro vous a-t-il aidé ?" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none;resize:vertical"></textarea>
+        </div>
+
+        <button type="submit" id="review-submit" style="width:100%;background:#C2501A;color:white;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s">Envoyer mon avis</button>
+      </form>
+
+      <!-- Message de confirmation -->
+      <div id="review-thanks" style="display:none;text-align:center;padding:36px 20px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:14px">
+        <div style="font-size:40px;margin-bottom:12px">🙏</div>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#15803D;margin-bottom:6px">Merci beaucoup !</p>
+        <p style="font-size:14px;color:#166534;line-height:1.6">Nous avons bien reçu votre avis. Si vous l'acceptez, il pourrait bientôt apparaître sur notre site pour aider d'autres commerçants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── TARIFS ── -->
 <section id="tarifs" style="background:#FAFAF8;padding:96px 0">
   <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
@@ -737,8 +794,71 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
   </div>
 </footer>
 
+<style>
+@media (max-width: 768px) {
+  #avis > div { padding: 0 20px !important; }
+  .review-row { grid-template-columns: 1fr !important; }
+}
+</style>
+
 <script>
-// Flèche de navigation sur le carousel "Comment ça fonctionne" (mobile uniquement)
+// ── Notation étoiles + envoi AJAX (formulaire avis) ──
+(function() {
+  var form = document.getElementById('review-form');
+  if (!form) return;
+
+  var stars = Array.from(document.querySelectorAll('.star-btn'));
+  var noteInput = document.getElementById('note-input');
+  var selected = 0;
+
+  function paintStars(val) {
+    stars.forEach(function(s) {
+      s.style.color = parseInt(s.dataset.val) <= val ? '#C2501A' : '#D1D5DB';
+    });
+  }
+
+  stars.forEach(function(star) {
+    star.addEventListener('click', function() {
+      selected = parseInt(star.dataset.val);
+      noteInput.value = selected + ' étoile' + (selected > 1 ? 's' : '');
+      paintStars(selected);
+    });
+    star.addEventListener('mouseover', function() { paintStars(parseInt(star.dataset.val)); });
+    star.addEventListener('mouseout',  function() { paintStars(selected); });
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!noteInput.value) {
+      noteInput.setCustomValidity('Veuillez choisir une note.');
+      noteInput.reportValidity();
+      return;
+    }
+    var btn = document.getElementById('review-submit');
+    btn.textContent = 'Envoi…';
+    btn.disabled = true;
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('review-thanks').style.display = 'block';
+      } else {
+        btn.textContent = 'Envoyer mon avis';
+        btn.disabled = false;
+        alert('Erreur lors de l\'envoi. Réessayez ou écrivez-nous sur WhatsApp.');
+      }
+    }).catch(function() {
+      btn.textContent = 'Envoyer mon avis';
+      btn.disabled = false;
+    });
+  });
+})();
+
+// ── Flèche de navigation sur le carousel "Comment ça fonctionne" (mobile uniquement) ──
 document.addEventListener('DOMContentLoaded', function() {
   if (window.innerWidth > 768) return;
 
