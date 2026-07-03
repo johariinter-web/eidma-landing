@@ -290,12 +290,25 @@ img, svg { max-width: 100%; }
 
   /* === FOOTER === */
   .footer-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 32px !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 24px 12px !important;
   }
+  /* Eidma brand : pleine largeur en haut */
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1 !important;
+  }
+  .footer-grid > div:first-child p {
+    max-width: 100% !important;
+  }
+  /* Liens + titres de colonnes : plus petits pour tenir sur 3 colonnes */
+  .footer-grid > div:not(:first-child) > div:first-child {
+    font-size: 11px !important;
+    margin-bottom: 10px !important;
+  }
+  .footer-grid a { font-size: 12px !important; }
   footer .container > div:last-child {
     flex-direction: column !important;
-    gap: 12px !important;
+    gap: 10px !important;
     text-align: center !important;
   }
 
@@ -334,8 +347,8 @@ img, svg { max-width: 100%; }
 }
 
 @media (max-width: 480px) {
-  /* Single column footer on very small screens */
-  .footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  /* Footer : garder Eidma + 3 colonnes même sur petit écran */
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 20px 8px !important; }
 
   /* Hero even smaller */
   .hero-text h1 { font-size: 24px !important; }
