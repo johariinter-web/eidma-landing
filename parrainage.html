@@ -122,12 +122,20 @@
         return;
       }
       var payants = new Set(paiements.map(function (p) { return p.parrainage_id; }));
-      liste.innerHTML = parrainages.map(function (p) {
+      liste.innerHTML = '';
+      parrainages.forEach(function (p) {
         var estPayant = payants.has(p.id);
-        return '<div class="row"><span>' + p.filleul_nom + '</span>' +
-          '<span class="badge ' + (estPayant ? 'badge-payant' : 'badge-attente') + '">' +
-          (estPayant ? 'Payant' : 'En attente') + '</span></div>';
-      }).join('');
+        var row = document.createElement('div');
+        row.className = 'row';
+        var nameSpan = document.createElement('span');
+        nameSpan.textContent = p.filleul_nom;
+        var badge = document.createElement('span');
+        badge.className = 'badge ' + (estPayant ? 'badge-payant' : 'badge-attente');
+        badge.textContent = estPayant ? 'Payant' : 'En attente';
+        row.appendChild(nameSpan);
+        row.appendChild(badge);
+        liste.appendChild(row);
+      });
     }
 
     charger().catch(function () {
