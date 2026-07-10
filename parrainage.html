@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suivi de parrainage — MargoPro</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body{font-family:'DM Sans',system-ui,sans-serif;color:#1F2937;background:#FAFAF8;line-height:1.5;margin:0;padding:32px 20px}
+    .wrap{max-width:480px;margin:0 auto}
+    .card{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:24px;margin-bottom:16px}
+    h1{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;margin:0 0 6px}
+    .code{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:800;color:#C2501A;letter-spacing:1px}
+    .muted{color:#6B7280;font-size:14px}
+    .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+    .row:last-child{border-bottom:none}
+    .badge{font-size:12px;font-weight:700;padding:3px 10px;border-radius:100px}
+    .badge-attente{background:#FEF3D8;color:#92650A}
+    .badge-payant{background:#EAF5EE;color:#166534}
+    .solde{font-size:28px;font-weight:800;color:#166534;font-family:'Space Grotesk',sans-serif}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Suivi de parrainage</h1>
+      <p class="muted" id="intro">Chargement…</p>
+    </div>
+    <div class="card" id="stats-card" style="display:none">
+      <p class="muted" style="margin:0 0 6px" id="stats-label"></p>
+      <div class="solde" id="stats-valeur"></div>
+    </div>
+    <div class="card" id="liste-card" style="display:none">
+      <p class="muted" style="margin:0 0 10px;font-weight:700;color:#1F2937">Vos filleuls</p>
+      <div id="liste"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+  (function () {
+    var SUPABASE_URL = 'https://qkyvzvehqmjjepkaihte.supabase.co';
+    var SUPABASE_ANON_KEY = 'sb_publishable_cMzkFR9BIOQYvMq0Qp8QLA_5cdKI53H';
+    var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    var code = new URLSearchParams(window.location.search).get('code');
+    var intro = document.getElementById('intro');
+
+    if (!code) {
+      intro.textContent = 'Code introuvable.';
+      return;
+    }
+
+    async function charger() {
+      var res = await supabase
+        .from('affiliates')
+        .select('id, code, recompense, mois_gratuits_accordes')
+        .eq('code', code)
+        .maybeSingle();
+      var affiliate = res.data;
+
+      if (!affiliate) {
+        intro.textContent = 'Code introuvable.';
+        return;
+      }
+
+      intro.innerHTML = 'Code <span class="code">' + affiliate.code + '</span>';
+
+      var parrainagesRes = await supabase
+        .from('parrainages')
+        .select('id, filleul_nom, date_inscription')
+        .eq('affiliate_id', affiliate.id)
+        .order('date_inscription', { ascending: false });
+      var parrainages = parrainagesRes.data || [];
+
+      var paiementsRes = await supabase
+        .from('parrainage_paiements')
+        .select('parrainage_id, mois, montant_paye, commission_versee')
+        .in('parrainage_id', parrainages.map(function (p) { return p.id; }));
+      var paiements = paiementsRes.data || [];
+
+      afficherStats(affiliate, paiements);
+      afficherListe(parrainages, paiements);
+    }
+
+    function afficherStats(affiliate, paiements) {
+      var statsCard = document.getElementById('stats-card');
+      var label = document.getElementById('stats-label');
+      var valeur = document.getElementById('stats-valeur');
+      statsCard.style.display = 'block';
+
+      if (affiliate.recompense === 'mois_gratuit') {
+        var filleulsPayants = new Set(paiements.map(function (p) { return p.parrainage_id; })).size;
+        label.textContent = 'Progression vers le prochain mois gratuit';
+        valeur.textContent = (filleulsPayants % 4) + ' / 4 filleuls payants';
+      } else {
+        var parFilleul = {};
+        paiements.forEach(function (p) {
+          (parFilleul[p.parrainage_id] = parFilleul[p.parrainage_id] || []).push(p);
+        });
+        var solde = 0;
+        Object.keys(parFilleul).forEach(function (id) {
+          var douzeMois = parFilleul[id]
+            .slice()
+            .sort(function (a, b) { return a.mois.localeCompare(b.mois); })
+            .slice(0, 12);
+          douzeMois.forEach(function (p) {
+            if (!p.commission_versee) solde += p.montant_paye * 0.15;
+          });
+        });
+        label.textContent = 'Solde de commission';
+        valeur.textContent = Math.round(solde).toLocaleString('fr-FR') + ' FCFA';
+      }
+    }
+
+    function afficherListe(parrainages, paiements) {
+      var listeCard = document.getElementById('liste-card');
+      var liste = document.getElementById('liste');
+      listeCard.style.display = 'block';
+      if (parrainages.length === 0) {
+        liste.innerHTML = '<p class="muted">Aucun filleul pour l\'instant.</p>';
+        return;
+      }
+      var payants = new Set(paiements.map(function (p) { return p.parrainage_id; }));
+      liste.innerHTML = parrainages.map(function (p) {
+        var estPayant = payants.has(p.id);
+        return '<div class="row"><span>' + p.filleul_nom + '</span>' +
+          '<span class="badge ' + (estPayant ? 'badge-payant' : 'badge-attente') + '">' +
+          (estPayant ? 'Payant' : 'En attente') + '</span></div>';
+      }).join('');
+    }
+
+    charger().catch(function () {
+      intro.textContent = 'Code introuvable.';
+    });
+  })();
+  </script>
+</body>
+</html>
