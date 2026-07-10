@@ -698,6 +698,48 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
   </div>
 </section>
 
+<!-- ── AFFILIATION ── -->
+<section id="affiliation" style="background:white;padding:96px 0">
+  <div style="max-width:720px;margin:0 auto;padding:0 64px">
+    <div style="text-align:center;margin-bottom:48px">
+      <div style="display:inline-flex;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Affiliation</span></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em;margin-bottom:14px">Gagnez en recommandant MargoPro</h2>
+      <p style="font-size:16px;color:#6B7280;max-width:520px;margin:0 auto;line-height:1.65">Que vous utilisiez déjà MargoPro ou non, vous pouvez gagner une récompense pour chaque commerçant qui s'abonne grâce à vous.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:48px">
+      <div style="background:#FAFAF8;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:26px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#1F2937;margin-bottom:8px">Déjà abonné ?</div>
+        <p style="font-size:14px;color:#6B7280;line-height:1.6;margin-bottom:14px">Générez votre code directement dans l'application, dans Paramètres → Parrainage. Choisissez entre 1 mois gratuit tous les 4 filleuls, ou 15% de commission récurrente.</p>
+        <a href="https://margopro.eidma.co" target="_blank" rel="noopener" style="text-decoration:none;color:#C2501A;font-size:14px;font-weight:700">Ouvrir MargoPro →</a>
+      </div>
+      <div style="background:#FAFAF8;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:26px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#1F2937;margin-bottom:8px">Pas encore d'abonnement ?</div>
+        <p style="font-size:14px;color:#6B7280;line-height:1.6">Recevez 15% de commission récurrente (12 mois max par filleul) en recommandant MargoPro autour de vous. Remplissez le formulaire ci-dessous pour recevoir votre code.</p>
+      </div>
+    </div>
+
+    <div id="affiliation-wrap" style="max-width:420px;margin:0 auto">
+      <form id="affiliation-form">
+        <div style="margin-bottom:14px">
+          <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Votre nom *</label>
+          <input type="text" name="nom" required placeholder="Aminata Diop" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none;box-sizing:border-box">
+        </div>
+        <div style="margin-bottom:20px">
+          <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Votre numéro WhatsApp *</label>
+          <input type="tel" name="whatsapp" required placeholder="+221 77 000 00 00" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none;box-sizing:border-box">
+        </div>
+        <button type="submit" style="width:100%;background:#C2501A;color:white;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">Recevoir mon code d'affilié</button>
+      </form>
+      <div id="affiliation-thanks" style="display:none;text-align:center;padding:36px 20px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:14px">
+        <div style="font-size:40px;margin-bottom:12px">🎉</div>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#15803D;margin-bottom:6px">Demande envoyée !</p>
+        <p style="font-size:14px;color:#166534;line-height:1.6">Nous allons vous envoyer votre code d'affilié personnalisé sur WhatsApp très bientôt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── FAQ ── -->
 <section id="faq" style="background:white;padding:96px 0">
   <div style="max-width:720px;margin:0 auto;padding:0 64px">
@@ -862,6 +904,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
   wrap.appendChild(btn);
 });
+</script>
+<script>
+// ── Formulaire affiliation (non-abonnés) — envoi WhatsApp ──
+(function() {
+  var form = document.getElementById('affiliation-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var nom = (form.querySelector('[name="nom"]') || {}).value || '';
+    var whatsapp = (form.querySelector('[name="whatsapp"]') || {}).value || '';
+    var msg = '🤝 Demande de code affilié MargoPro\n\n'
+      + 'Nom : ' + nom + '\n'
+      + 'WhatsApp : ' + whatsapp;
+    form.style.display = 'none';
+    document.getElementById('affiliation-thanks').style.display = 'block';
+    setTimeout(function() {
+      window.open('https://wa.me/15145522214?text=' + encodeURIComponent(msg), '_blank');
+    }, 400);
+  });
+})();
+
+// ── Propagation du code de parrainage (?ref=) sur les liens CTA MargoPro ──
+(function() {
+  var ref = new URLSearchParams(window.location.search).get('ref');
+  if (!ref) return;
+  document.querySelectorAll('a[href^="https://margopro.eidma.co"]').forEach(function(a) {
+    var url = new URL(a.href);
+    url.searchParams.set('ref', ref);
+    a.href = url.toString();
+  });
+})();
 </script>
 </body>
 </html>
