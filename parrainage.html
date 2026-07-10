@@ -53,7 +53,7 @@
 
     async function charger() {
       var res = await supabase
-        .from('affiliates')
+        .from('affiliates_public')
         .select('id, code, recompense, mois_gratuits_accordes')
         .eq('code', code)
         .maybeSingle();
@@ -67,14 +67,14 @@
       intro.innerHTML = 'Code <span class="code">' + affiliate.code + '</span>';
 
       var parrainagesRes = await supabase
-        .from('parrainages')
+        .from('parrainages_public')
         .select('id, filleul_nom, date_inscription')
         .eq('affiliate_id', affiliate.id)
         .order('date_inscription', { ascending: false });
       var parrainages = parrainagesRes.data || [];
 
       var paiementsRes = await supabase
-        .from('parrainage_paiements')
+        .from('parrainage_paiements_public')
         .select('parrainage_id, mois, montant_paye, commission_versee')
         .in('parrainage_id', parrainages.map(function (p) { return p.id; }));
       var paiements = paiementsRes.data || [];
