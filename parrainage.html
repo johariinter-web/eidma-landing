@@ -41,10 +41,16 @@
   (function () {
     var SUPABASE_URL = 'https://qkyvzvehqmjjepkaihte.supabase.co';
     var SUPABASE_ANON_KEY = 'sb_publishable_cMzkFR9BIOQYvMq0Qp8QLA_5cdKI53H';
+    var intro = document.getElementById('intro');
+
+    if (!window.supabase) {
+      intro.textContent = 'Code introuvable.';
+      return;
+    }
+
     var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     var code = new URLSearchParams(window.location.search).get('code');
-    var intro = document.getElementById('intro');
 
     if (!code) {
       intro.textContent = 'Code introuvable.';
