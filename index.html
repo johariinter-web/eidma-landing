@@ -956,17 +956,31 @@ document.addEventListener('DOMContentLoaded', function() {
     );
 
     var code = null;
+    var dejaInscrit = false;
     for (var tentative = 0; tentative < 5; tentative++) {
       var essai = genererCode(nom);
       var res = await supabase
         .from('affiliates')
         .insert({ code: essai, nom: nom, contact: whatsapp, type: 'non_abonne' });
       if (!res.error) { code = essai; break; }
+      if (res.error.message && res.error.message.indexOf('affiliates_contact_non_abonne_key') !== -1) {
+        dejaInscrit = true;
+        break;
+      }
+    }
+
+    if (dejaInscrit) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Recevoir mon code d'affilié";
+      erreur.textContent = 'Un code existe déjà pour ce numéro WhatsApp. Contactez-nous directement pour le récupérer.';
+      erreur.style.display = 'block';
+      return;
     }
 
     if (!code) {
       submitBtn.disabled = false;
       submitBtn.textContent = "Recevoir mon code d'affilié";
+      erreur.textContent = 'Une erreur est survenue. Réessayez, ou contactez-nous directement.';
       erreur.style.display = 'block';
       return;
     }
