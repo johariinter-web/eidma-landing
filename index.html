@@ -960,10 +960,8 @@ document.addEventListener('DOMContentLoaded', function() {
       var essai = genererCode(nom);
       var res = await supabase
         .from('affiliates')
-        .insert({ code: essai, nom: nom, contact: whatsapp, type: 'non_abonne' })
-        .select('code')
-        .single();
-      if (!res.error) { code = res.data.code; break; }
+        .insert({ code: essai, nom: nom, contact: whatsapp, type: 'non_abonne' });
+      if (!res.error) { code = essai; break; }
     }
 
     if (!code) {
