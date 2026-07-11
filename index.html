@@ -721,12 +721,18 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
 
     <div id="affiliation-wrap" style="max-width:420px;margin:0 auto">
       <form id="affiliation-form">
-        <div style="margin-bottom:14px">
-          <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Votre nom *</label>
-          <input type="text" name="nom" required placeholder="Aminata Diop" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none;box-sizing:border-box">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Prénom *</label>
+            <input type="text" name="prenom" required placeholder="Aminata" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none;box-sizing:border-box">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Nom *</label>
+            <input type="text" name="nom" required placeholder="Diop" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none;box-sizing:border-box">
+          </div>
         </div>
         <div style="margin-bottom:20px">
-          <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Votre numéro WhatsApp *</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Numéro WhatsApp (avec l'indicatif de votre pays) *</label>
           <input type="tel" name="whatsapp" required placeholder="+221 77 000 00 00" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none;box-sizing:border-box">
         </div>
         <button type="submit" id="affiliation-submit" style="width:100%;background:#C2501A;color:white;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">Recevoir mon code d'affilié</button>
@@ -935,7 +941,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    var nom = (form.querySelector('[name="nom"]') || {}).value || '';
+    var prenom = (form.querySelector('[name="prenom"]') || {}).value || '';
+    var nomFamille = (form.querySelector('[name="nom"]') || {}).value || '';
+    var nom = (prenom + ' ' + nomFamille).trim();
     var whatsapp = (form.querySelector('[name="whatsapp"]') || {}).value || '';
     var submitBtn = document.getElementById('affiliation-submit');
     var erreur = document.getElementById('affiliation-erreur');
