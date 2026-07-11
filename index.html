@@ -729,13 +729,18 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
           <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px">Votre numéro WhatsApp *</label>
           <input type="tel" name="whatsapp" required placeholder="+221 77 000 00 00" style="width:100%;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:9px;font-size:14px;font-family:inherit;color:#1F2937;outline:none;box-sizing:border-box">
         </div>
-        <button type="submit" style="width:100%;background:#C2501A;color:white;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">Recevoir mon code d'affilié</button>
+        <button type="submit" id="affiliation-submit" style="width:100%;background:#C2501A;color:white;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">Recevoir mon code d'affilié</button>
       </form>
       <div id="affiliation-thanks" style="display:none;text-align:center;padding:36px 20px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:14px">
         <div style="font-size:40px;margin-bottom:12px">🎉</div>
-        <p style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#15803D;margin-bottom:6px">Demande envoyée !</p>
-        <p style="font-size:14px;color:#166534;line-height:1.6">Nous allons vous envoyer votre code d'affilié personnalisé sur WhatsApp très bientôt.</p>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#15803D;margin-bottom:6px">Votre code : <span id="affiliation-code" style="color:#C2501A"></span></p>
+        <p style="font-size:14px;color:#166534;line-height:1.6;margin-bottom:16px">Gardez ce code précieusement. Partagez votre lien pour recommander MargoPro, et gardez votre lien de suivi pour voir votre progression à tout moment.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a id="affiliation-link-partage" href="#" target="_blank" rel="noopener" style="text-decoration:none;background:#C2501A;color:white;padding:12px;border-radius:9px;font-size:14px;font-weight:700">Partager mon lien via WhatsApp</a>
+          <a id="affiliation-link-suivi" href="#" target="_blank" rel="noopener" style="text-decoration:none;color:#166534;font-size:13px;font-weight:600;text-decoration:underline">Voir mon suivi de parrainage →</a>
+        </div>
       </div>
+      <p id="affiliation-erreur" style="display:none;margin-top:14px;font-size:13px;font-weight:600;color:#C4341A;text-align:center">Une erreur est survenue. Réessayez, ou contactez-nous directement.</p>
     </div>
   </div>
 </section>
@@ -905,21 +910,86 @@ document.addEventListener('DOMContentLoaded', function() {
   wrap.appendChild(btn);
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-// ── Formulaire affiliation (non-abonnés) — envoi WhatsApp ──
+// ── Formulaire affiliation (non-abonnés) — inscription automatique ──
 (function() {
   var form = document.getElementById('affiliation-form');
   if (!form) return;
 
-  form.addEventListener('submit', function(e) {
+  var ALPHABET_CODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+
+  function genererCode(nom) {
+    var lettres = (nom || '')
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toUpperCase()
+      .replace(/[^A-Z]/g, '');
+    var prefixe = (lettres.slice(0, 3) || 'MGP');
+    while (prefixe.length < 3) prefixe += 'X';
+    var octets = new Uint8Array(4);
+    crypto.getRandomValues(octets);
+    var suffixe = Array.from(octets, function(o) { return ALPHABET_CODE[o % ALPHABET_CODE.length]; }).join('');
+    return prefixe + '-' + suffixe;
+  }
+
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     var nom = (form.querySelector('[name="nom"]') || {}).value || '';
     var whatsapp = (form.querySelector('[name="whatsapp"]') || {}).value || '';
-    var msg = '🤝 Demande de code affilié MargoPro\n\n'
-      + 'Nom : ' + nom + '\n'
-      + 'WhatsApp : ' + whatsapp;
+    var submitBtn = document.getElementById('affiliation-submit');
+    var erreur = document.getElementById('affiliation-erreur');
+    erreur.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = '...';
+
+    if (!window.supabase) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Recevoir mon code d'affilié";
+      erreur.style.display = 'block';
+      return;
+    }
+
+    var supabase = window.supabase.createClient(
+      'https://qkyvzvehqmjjepkaihte.supabase.co',
+      'sb_publishable_cMzkFR9BIOQYvMq0Qp8QLA_5cdKI53H'
+    );
+
+    var code = null;
+    for (var tentative = 0; tentative < 5; tentative++) {
+      var essai = genererCode(nom);
+      var res = await supabase
+        .from('affiliates')
+        .insert({ code: essai, nom: nom, contact: whatsapp, type: 'non_abonne' })
+        .select('code')
+        .single();
+      if (!res.error) { code = res.data.code; break; }
+    }
+
+    if (!code) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Recevoir mon code d'affilié";
+      erreur.style.display = 'block';
+      return;
+    }
+
+    var lienPartage = 'https://eidma.co/?ref=' + code;
+    var lienSuivi = 'https://eidma.co/parrainage.html?code=' + code;
+
+    document.getElementById('affiliation-code').textContent = code;
+    var aPartage = document.getElementById('affiliation-link-partage');
+    aPartage.href = 'https://wa.me/?text=' + encodeURIComponent(
+      "Je gère mon commerce avec MargoPro, l'appli qui suit stock, ventes et marges. Inscris-toi avec mon code " + code + ' : ' + lienPartage
+    );
+    document.getElementById('affiliation-link-suivi').href = lienSuivi;
+
     form.style.display = 'none';
     document.getElementById('affiliation-thanks').style.display = 'block';
+
+    var msg = '🤝 Nouvel affilié non-abonné inscrit automatiquement\n\n'
+      + 'Nom : ' + nom + '\n'
+      + 'WhatsApp : ' + whatsapp + '\n'
+      + 'Code : ' + code;
     setTimeout(function() {
       window.open('https://wa.me/15145522214?text=' + encodeURIComponent(msg), '_blank');
     }, 400);
