@@ -3,20 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Eidma — Des outils simples pour simplifier votre quotidien</title>
-  <meta name="description" content="Eidma développe des applications simples pour le quotidien : MargoPro pour gérer votre commerce, Profyra pour valider la rentabilité de vos produits avant de les acheter.">
-  <meta property="og:title" content="Eidma — Des outils simples pour simplifier votre quotidien">
-  <meta property="og:description" content="MargoPro (gestion de commerce) et Profyra (rentabilité produit) : deux applications simples, pensées pour être utilisées dès le premier jour.">
-  <meta property="og:url" content="https://eidma.co">
+  <title>Profyra : Calculez la rentabilité d'un produit avant de l'acheter — Eidma</title>
+  <meta name="description" content="Profyra : validez la rentabilité d'un produit avant de l'acheter, calculez votre prix de vente et simulez votre cash flow. 14,99 $ USD/mois.">
+  <meta property="og:title" content="Profyra : Sachez si un produit sera rentable avant de l'acheter">
+  <meta property="og:description" content="Calculateur de rentabilité, cash flow et suivi des fournisseurs pour revendeurs. 14,99 $ USD/mois.">
+  <meta property="og:url" content="https://eidma.co/profyra">
   <meta property="og:type" content="website">
   <meta name="robots" content="index, follow">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Eidma",
-    "url": "https://eidma.co",
-    "description": "Eidma développe des applications simples pour le quotidien : commerce, organisation, famille."
+    "@type": "SoftwareApplication",
+    "name": "Profyra",
+    "url": "https://margo-cost.vercel.app",
+    "description": "Application de calcul de rentabilité pour revendeurs : validez un produit, calculez votre marge et votre prix de vente, simulez votre cash flow et suivez vos fournisseurs.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "fr",
+    "offers": {
+      "@type": "Offer",
+      "name": "Abonnement Profyra",
+      "price": "14.99",
+      "priceCurrency": "USD",
+      "billingPeriod": "P1M"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Eidma",
+      "url": "https://eidma.co"
+    }
   }
   </script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C2501A'/><text y='.9em' font-size='70' font-family='serif' font-weight='bold' fill='white' x='10'>E</text></svg>">
@@ -345,12 +360,13 @@ img, svg { max-width: 100%; }
       <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#1F2937;letter-spacing:-.01em">Eidma</span>
     </a>
     <div class="nav-links" style="display:flex;align-items:center;gap:36px">
-      <a href="#produits" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">Produits</a>
-      <a href="/apropos" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">À propos</a>
+      <a href="/#produits" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">Produits</a>
+      <a href="#solutions" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">Fonctionnalités</a>
+      <a href="#tarifs" style="text-decoration:none;color:#6B7280;font-size:14px;font-weight:500">Tarifs</a>
     </div>
     <div class="nav-ctas" style="display:flex;align-items:center;gap:16px">
 
-      <a href="#produits" style="text-decoration:none;background:#C2501A;color:white;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;box-shadow:0 2px 10px rgba(194,80,26,.25)">Nos produits</a>
+      <a href="https://margo-cost.vercel.app" target="_blank" rel="noopener" style="text-decoration:none;background:#C2501A;color:white;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;box-shadow:0 2px 10px rgba(194,80,26,.25)">Commencer</a>
       <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" style="display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;align-items:center;justify-content:center;border-radius:8px">
         <span style="display:block;width:22px;height:2px;background:#1F2937;border-radius:2px"></span>
         <span style="display:block;width:22px;height:2px;background:#1F2937;border-radius:2px"></span>
@@ -361,10 +377,12 @@ img, svg { max-width: 100%; }
 </nav>
 <div id="mobile-menu" style="display:none;position:fixed;top:60px;left:0;right:0;bottom:0;z-index:98;background:rgba(250,250,248,.98);backdrop-filter:blur(16px);flex-direction:column;padding:24px 24px 40px;overflow-y:auto;border-top:1px solid rgba(0,0,0,.06)">
   <nav style="display:flex;flex-direction:column;gap:0">
-    <a href="#produits" onclick="closeMobileMenu()" style="text-decoration:none;color:#1F2937;font-size:17px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.07);display:block">Produits</a>
-    <a href="/apropos" onclick="closeMobileMenu()" style="text-decoration:none;color:#1F2937;font-size:17px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.07);display:block">À propos</a>
+    <a href="/#produits" onclick="closeMobileMenu()" style="text-decoration:none;color:#1F2937;font-size:17px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.07);display:block">Produits</a>
+    <a href="#solutions" onclick="closeMobileMenu()" style="text-decoration:none;color:#1F2937;font-size:17px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.07);display:block">Fonctionnalités</a>
+    <a href="#tarifs" onclick="closeMobileMenu()" style="text-decoration:none;color:#1F2937;font-size:17px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.07);display:block">Tarifs</a>
+    <a href="https://margo-cost.vercel.app" target="_blank" rel="noopener" style="text-decoration:none;color:#6B7280;font-size:15px;font-weight:500;padding:16px 0;display:block">Connexion</a>
   </nav>
-  <a href="#produits" onclick="closeMobileMenu()" style="display:block;margin-top:24px;text-align:center;background:#C2501A;color:white;padding:16px 24px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(194,80,26,.3)">Nos produits</a>
+  <a href="https://margo-cost.vercel.app" target="_blank" rel="noopener" onclick="closeMobileMenu()" style="display:block;margin-top:24px;text-align:center;background:#C2501A;color:white;padding:16px 24px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(194,80,26,.3)">Commencer</a>
 </div>
 <script>
 function toggleMobileMenu(){var m=document.getElementById("mobile-menu"),o=m.style.display==="flex";m.style.display=o?"none":"flex";document.getElementById("hamburger").setAttribute("aria-expanded",String(!o));document.body.style.overflow=o?"":"hidden";}
@@ -376,66 +394,124 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
 <section id="hero" style="background:#FAFAF8;position:relative;overflow:hidden;padding:0">
   <div style="position:absolute;right:-120px;top:-80px;width:520px;height:520px;background:radial-gradient(circle,rgba(194,80,26,.1) 0%,transparent 68%);border-radius:50%;pointer-events:none"></div>
   <div style="position:absolute;left:-60px;bottom:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(212,175,55,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none"></div>
-  <div style="max-width:1200px;margin:0 auto;padding:64px 64px 80px;text-align:center">
-    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:800;line-height:1.2;color:#1F2937;letter-spacing:-.02em;text-wrap:pretty;margin-bottom:20px">
-      Des outils simples pour <span style="color:#22A854;position:relative;display:inline-block">simplifier<svg viewBox="0 0 220 10" style="position:absolute;bottom:-4px;left:0;width:100%;height:9px;overflow:visible"><path d="M2,8 Q55,1 110,7 Q165,13 218,5" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"></path></svg></span> votre quotidien.
-    </h1>
-    <p style="font-size:15px;line-height:1.72;color:#6B7280;max-width:480px;margin:0 auto;text-wrap:pretty">Eidma développe des applications pensées pour être comprises et utilisées dès le premier jour, sans formation, depuis n'importe quel téléphone.</p>
+  <div class="hero-cols" style="max-width:1200px;margin:0 auto;padding:64px 64px 80px;display:flex;align-items:flex-start;gap:48px">
+    <div class="hero-text" style="flex:0 0 510px;display:flex;flex-direction:column;gap:24px;padding-top:12px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;width:fit-content">
+        <div style="width:7px;height:7px;border-radius:50%;background:#C2501A;box-shadow:0 0 0 3px rgba(194,80,26,.2)"></div>
+        <span style="font-size:13px;color:#C2501A;font-weight:500">Nouveau · Profyra est disponible</span>
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:800;line-height:1.2;color:#1F2937;letter-spacing:-.02em;text-wrap:pretty">
+        Sachez si un produit sera <span style="color:#22A854;position:relative;display:inline-block">rentable<svg viewBox="0 0 180 10" style="position:absolute;bottom:-4px;left:0;width:100%;height:9px;overflow:visible"><path d="M2,8 Q45,1 90,7 Q135,13 178,5" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"></path></svg></span> avant de l'acheter.
+      </h1>
+      <p style="font-size:15px;line-height:1.72;color:#6B7280;max-width:440px;text-wrap:pretty">Profyra aide les revendeurs à valider un produit avant de commander : entrez son prix et ses frais, obtenez tout de suite votre marge, votre prix de vente conseillé et une simulation de trésorerie pour vos commandes en gros.</p>
+      <div class="nav-ctas" style="display:flex;align-items:center;gap:16px">
+        <a href="https://margo-cost.vercel.app" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:#C2501A;color:white;padding:13px 26px;border-radius:10px;font-size:15px;font-weight:600;box-shadow:0 6px 22px rgba(194,80,26,.32)">Découvrir Profyra <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px">
+        <div style="display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6.5-6.5" stroke="#C2501A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:12px;color:#9CA3AF">Calcul instantané</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6.5-6.5" stroke="#C2501A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:12px;color:#9CA3AF">Mode clair ou sombre</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6.5-6.5" stroke="#C2501A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:12px;color:#9CA3AF">Support français</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ── PRODUITS ── -->
-<section id="produits" style="background:white;padding:96px 0">
+<!-- ── FONCTIONNALITÉS ── -->
+<section id="solutions" style="background:#F5F4F2;padding:96px 0">
   <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
-    <div style="text-align:center;margin-bottom:64px">
-      <div style="display:inline-flex;align-items:center;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Nos produits</span></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em;line-height:1.3;margin-bottom:14px">Choisissez le produit qui vous intéresse</h2>
+    <div style="text-align:center;margin-bottom:60px">
+      <div style="display:inline-flex;align-items:center;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Fonctionnalités</span></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em;line-height:1.3;margin-bottom:14px">Tout ce qu'il faut avant de commander</h2>
+      <p style="font-size:16px;color:#6B7280;max-width:460px;margin:0 auto;line-height:1.65">Profyra centralise chaque étape, de l'idée de produit jusqu'à la livraison de votre fournisseur.</p>
     </div>
-
-    <!-- MargoPro -->
-    <div class="products-row" style="background:#FAFAF8;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:52px;display:flex;gap:56px;align-items:center;margin-bottom:20px">
-      <div style="flex:1">
-        <div style="display:inline-flex;align-items:center;gap:7px;background:white;border:1px solid rgba(194,80,26,.25);border-radius:100px;padding:6px 14px;margin-bottom:22px"><div style="width:7px;height:7px;border-radius:50%;background:#C2501A"></div><span style="font-size:12px;color:#C2501A;font-weight:600;letter-spacing:.02em">Application mobile</span></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:800;color:#1F2937;letter-spacing:-.02em;line-height:1.3;margin-bottom:12px">MargoPro</h3>
-        <p style="font-size:15px;color:#6B7280;line-height:1.7;margin-bottom:26px;max-width:380px">Gérez votre stock, suivez vos ventes et analysez vos bénéfices en temps réel. Dédié aux commerçants africains.</p>
-        <a href="/margopro" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:#C2501A;color:white;padding:13px 26px;border-radius:10px;font-size:14px;font-weight:600;box-shadow:0 4px 16px rgba(194,80,26,.28)">Découvrir MargoPro <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+    <div class="solutions-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+      <div style="background:white;border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,.05)">
+        <div style="width:46px;height:46px;background:#FEF0E8;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 11l4 4 8-9" stroke="#C2501A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#1F2937;margin-bottom:9px">Validation</h4>
+        <p style="font-size:14px;color:#6B7280;line-height:1.7">Validez chaque produit que vous avez trouvé avant d'y investir un centime.</p>
       </div>
-      <div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:14px">
-        <div style="width:190px;height:390px;background:#111827;border-radius:34px;padding:6px;box-shadow:0 28px 56px rgba(0,0,0,.18),0 0 0 1px rgba(255,255,255,.08)">
-          <div style="width:100%;height:100%;background:#000;border-radius:28px;overflow:hidden;position:relative">
-            <video autoplay muted loop playsinline style="width:100%;height:100%;display:block;object-fit:cover">
-              <source src="/MP4.mp4" type="video/mp4">
-            </video>
-            <div style="position:absolute;top:0;left:0;right:0;height:14px;background:#111827;border-radius:28px 28px 0 0;pointer-events:none"></div>
-          </div>
+      <div style="background:white;border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,.05)">
+        <div style="width:46px;height:46px;background:#EFF6FF;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 4h16M3 11h16M3 18h10" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round"></path></svg></div>
+        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#1F2937;margin-bottom:9px">Mes produits</h4>
+        <p style="font-size:14px;color:#6B7280;line-height:1.7">Retrouvez la liste de tous les produits que vous avez déjà enregistrés.</p>
+      </div>
+      <div style="background:white;border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,.05)">
+        <div style="width:46px;height:46px;background:#DCFCE7;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="2" width="16" height="18" rx="2" stroke="#15803D" stroke-width="2"></rect><path d="M7 7h8M7 11h8M7 15h4" stroke="#15803D" stroke-width="2" stroke-linecap="round"></path></svg></div>
+        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#1F2937;margin-bottom:9px">Calculateur</h4>
+        <p style="font-size:14px;color:#6B7280;line-height:1.7">La fonctionnalité principale : calculez votre rentabilité et le prix de vente conseillé pour chaque produit.</p>
+      </div>
+      <div style="background:white;border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,.05)">
+        <div style="width:46px;height:46px;background:#FFFBEB;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 15c2-6 5-9 7-9s5 3 7 9" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 18h18" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"></path></svg></div>
+        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#1F2937;margin-bottom:9px">Cash flow</h4>
+        <p style="font-size:14px;color:#6B7280;line-height:1.7">Simulez les montants nécessaires quand vous commandez en grande quantité.</p>
+      </div>
+      <div style="background:white;border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,.05);grid-column:1/-1">
+        <div style="width:46px;height:46px;background:#FEF0E8;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 8l8-5 8 5v10a1 1 0 01-1 1H4a1 1 0 01-1-1V8z" stroke="#C2501A" stroke-width="2" stroke-linejoin="round"></path><path d="M8 19v-6h6v6" stroke="#C2501A" stroke-width="2" stroke-linejoin="round"></path></svg></div>
+        <h4 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#1F2937;margin-bottom:9px">Fournisseurs</h4>
+        <p style="font-size:14px;color:#6B7280;line-height:1.7">Enregistrez les fournisseurs avec qui vous travaillez et suivez vos livraisons : cochez quand une commande est bien arrivée pour l'enregistrer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMENT ÇA FONCTIONNE ── -->
+<section id="comment-ca-marche" style="background:white;padding:96px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
+    <div style="text-align:center;margin-bottom:60px">
+      <div style="display:inline-flex;align-items:center;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Comment ça fonctionne</span></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em">Démarrez en 3 étapes</h2>
+    </div>
+    <div class="steps-grid" style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:20px;align-items:start">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px">
+        <div style="width:52px;height:52px;border-radius:50%;background:#C2501A;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(194,80,26,.35)"><span style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:white">1</span></div>
+        <div><h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#1F2937;margin-bottom:9px">Trouvez un produit</h4><p style="font-size:14px;color:#6B7280;line-height:1.65">Repérez un produit qui vous intéresse chez un fournisseur.</p></div>
+      </div>
+      <div style="padding-top:26px"><svg width="32" height="20" viewBox="0 0 32 20" fill="none"><path d="M2 10h28M24 4l6 6-6 6" stroke="#F4B896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px">
+        <div style="width:52px;height:52px;border-radius:50%;background:#C2501A;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(194,80,26,.35)"><span style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:white">2</span></div>
+        <div><h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#1F2937;margin-bottom:9px">Calculez sa rentabilité</h4><p style="font-size:14px;color:#6B7280;line-height:1.65">Entrez ses infos dans le calculateur : marge, prix de vente conseillé, tout est instantané.</p></div>
+      </div>
+      <div style="padding-top:26px"><svg width="32" height="20" viewBox="0 0 32 20" fill="none"><path d="M2 10h28M24 4l6 6-6 6" stroke="#F4B896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px">
+        <div style="width:52px;height:52px;border-radius:50%;background:#C2501A;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(194,80,26,.35)"><span style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:white">3</span></div>
+        <div><h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#1F2937;margin-bottom:9px">Commandez et suivez</h4><p style="font-size:14px;color:#6B7280;line-height:1.65">Passez commande chez votre fournisseur et cochez la livraison dès qu'elle arrive.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TARIFS ── -->
+<section id="tarifs" style="background:#FAFAF8;padding:96px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 64px">
+    <div style="text-align:center;margin-bottom:60px">
+      <div style="display:inline-flex;background:#FEF0E8;border:1px solid #F4B896;border-radius:100px;padding:7px 16px;margin-bottom:18px"><span style="font-size:13px;color:#C2501A;font-weight:600">Tarifs</span></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:800;color:#1F2937;letter-spacing:-.02em;margin-bottom:14px">Un seul prix, tout inclus</h2>
+      <p style="font-size:16px;color:#6B7280;max-width:400px;margin:0 auto;line-height:1.65">Ce tarif peut évoluer, il reflète l'offre actuelle.</p>
+    </div>
+    <div style="max-width:340px;margin:0 auto">
+      <div style="background:#C2501A;border-radius:18px;padding:32px;box-shadow:0 16px 48px rgba(194,80,26,.35)">
+        <div style="margin-bottom:24px"><div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:white;margin-bottom:7px">Profyra</div><div style="display:flex;align-items:baseline;gap:5px;margin-bottom:7px;white-space:nowrap"><span style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;color:white">14,99 $</span><span style="font-size:13px;color:rgba(255,255,255,.7)">USD / mois</span></div></div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+          <div style="display:flex;align-items:center;gap:9px"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l3.5 3.5L13 4" stroke="rgba(255,255,255,.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:13px;color:rgba(255,255,255,.9)">Validation illimitée de produits</span></div>
+          <div style="display:flex;align-items:center;gap:9px"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l3.5 3.5L13 4" stroke="rgba(255,255,255,.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:13px;color:rgba(255,255,255,.9)">Calculateur de rentabilité</span></div>
+          <div style="display:flex;align-items:center;gap:9px"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l3.5 3.5L13 4" stroke="rgba(255,255,255,.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:13px;color:rgba(255,255,255,.9)">Simulation de cash flow</span></div>
+          <div style="display:flex;align-items:center;gap:9px"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l3.5 3.5L13 4" stroke="rgba(255,255,255,.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:13px;color:rgba(255,255,255,.9)">Suivi des fournisseurs et livraisons</span></div>
         </div>
+        <a href="https://margo-cost.vercel.app" target="_blank" rel="noopener" style="text-decoration:none;display:block;text-align:center;background:white;color:#C2501A;padding:12px;border-radius:9px;font-size:14px;font-weight:700">Commencer</a>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Profyra -->
-    <div class="products-row" style="background:#FAFAF8;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:52px;display:flex;gap:56px;align-items:center;margin-bottom:20px">
-      <div style="flex:1">
-        <div style="display:inline-flex;align-items:center;gap:7px;background:white;border:1px solid rgba(194,80,26,.25);border-radius:100px;padding:6px 14px;margin-bottom:22px"><div style="width:7px;height:7px;border-radius:50%;background:#C2501A"></div><span style="font-size:12px;color:#C2501A;font-weight:600;letter-spacing:.02em">Application web</span></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:800;color:#1F2937;letter-spacing:-.02em;line-height:1.3;margin-bottom:12px">Profyra</h3>
-        <p style="font-size:15px;color:#6B7280;line-height:1.7;margin-bottom:26px;max-width:380px">Validez la rentabilité d'un produit avant de l'acheter : marge, prix de vente conseillé et simulation de cash flow. Dédié aux revendeurs.</p>
-        <a href="/profyra" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:#C2501A;color:white;padding:13px 26px;border-radius:10px;font-size:14px;font-weight:600;box-shadow:0 4px 16px rgba(194,80,26,.28)">Découvrir Profyra <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-      </div>
-    </div>
-
-    <!-- 2 autres -->
-    <div class="coming-soon-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-      <div style="background:#FAFAF8;border:1px solid rgba(0,0,0,.07);border-radius:16px;padding:32px;position:relative">
-        <div style="position:absolute;top:14px;right:14px;background:#F3F4F6;border-radius:100px;padding:4px 10px"><span style="font-size:11px;color:#9CA3AF;font-weight:600">Bientôt</span></div>
-        <div style="width:42px;height:42px;background:linear-gradient(135deg,#D4AF37,#E7C86E);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h10M3 15h7" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#1F2937;margin-bottom:7px">Eidma Templates</h3>
-        <p style="font-size:14px;color:#6B7280;line-height:1.65">Templates prêts à l'emploi pour simplifier votre gestion.</p>
-      </div>
-      <div style="background:#FAFAF8;border:1px solid rgba(0,0,0,.07);border-radius:16px;padding:32px;position:relative">
-        <div style="position:absolute;top:14px;right:14px;background:#F3F4F6;border-radius:100px;padding:4px 10px"><span style="font-size:11px;color:#9CA3AF;font-weight:600">Bientôt</span></div>
-        <div style="width:42px;height:42px;background:linear-gradient(135deg,#22A854,#15803D);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="white" stroke-width="1.8"></rect><path d="M7 2v3M13 2v3" stroke="white" stroke-width="1.8" stroke-linecap="round"></path><path d="M6 11l2.5 2.5L14 8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#1F2937;margin-bottom:7px">Organizen</h3>
-        <p style="font-size:14px;color:#6B7280;line-height:1.65">Organisez votre quotidien, planifiez les journées de vos enfants et bâtissez de bonnes routines en famille, simplement depuis votre téléphone.</p>
-      </div>
+<!-- ── CTA FINAL ── -->
+<section id="contact" style="background:linear-gradient(135deg,#C2501A,#9A3E14);padding:96px 0;position:relative;overflow:hidden">
+  <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border:80px solid rgba(255,255,255,.07);border-radius:50%;pointer-events:none"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border:60px solid rgba(255,255,255,.05);border-radius:50%;pointer-events:none"></div>
+  <div style="max-width:700px;margin:0 auto;padding:0 64px;text-align:center;position:relative;z-index:2">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:800;color:white;letter-spacing:-.025em;line-height:1.3;margin-bottom:18px">Prêt à valider votre prochain produit&nbsp;?</h2>
+    <p style="font-size:17px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto">Ne commandez plus à l'aveugle : sachez votre rentabilité avant d'acheter.</p>
+    <div class="cta-buttons" style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:22px">
+      <a href="https://margo-cost.vercel.app" target="_blank" rel="noopener" style="text-decoration:none;background:white;color:#C2501A;padding:15px 32px;border-radius:12px;font-size:16px;font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,.2)">Commencer avec Profyra</a>
     </div>
   </div>
 </section>
@@ -466,25 +542,43 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMobileM
     </div>
     <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center">
       <span style="font-size:13px;color:rgba(255,255,255,.25)">© 2026 Eidma. Tous droits réservés.</span>
-
+      
     </div>
   </div>
 </footer>
 
 <script>
-// ── Propagation du code de parrainage (?ref=) vers /margopro ──
-// Un lien d'affilié partagé pointe vers eidma.co/?ref=CODE (cette page).
-// Le code doit survivre jusqu'au clic sur "Découvrir MargoPro" pour que
-// margopro.html puisse a son tour l'ajouter aux liens vers margopro.eidma.co.
-(function() {
-  var ref = new URLSearchParams(window.location.search).get('ref');
-  if (!ref) return;
-  document.querySelectorAll('a[href^="/margopro"]').forEach(function(a) {
-    var url = new URL(a.getAttribute('href'), window.location.origin);
-    url.searchParams.set('ref', ref);
-    a.setAttribute('href', url.pathname + url.search);
+// ── Flèche de navigation sur le carousel "Comment ça fonctionne" (mobile uniquement) ──
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.innerWidth > 768) return;
+
+  var carousel = document.querySelector('.steps-grid');
+  if (!carousel) return;
+
+  // Wrapper pour le positionnement de la flèche
+  var wrap = document.createElement('div');
+  wrap.style.cssText = 'position:relative';
+  carousel.parentNode.insertBefore(wrap, carousel);
+  wrap.appendChild(carousel);
+
+  // Bouton flèche droite
+  var btn = document.createElement('button');
+  btn.setAttribute('aria-label', 'Étape suivante');
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.5 2.5l5 4.5-5 4.5" stroke="#C2501A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  btn.style.cssText = 'position:absolute;right:0;top:50%;transform:translateY(-60%);background:white;border:1px solid rgba(0,0,0,.08);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15);z-index:10;padding:0';
+
+  btn.addEventListener('click', function() {
+    carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
   });
-})();
+
+  // Disparaît à la dernière étape
+  carousel.addEventListener('scroll', function() {
+    var atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
+    btn.style.display = atEnd ? 'none' : 'flex';
+  }, { passive: true });
+
+  wrap.appendChild(btn);
+});
 </script>
 </body>
 </html>
